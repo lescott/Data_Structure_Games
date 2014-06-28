@@ -6,3 +6,31 @@ The goal of this game is to brush up on stacks while at the same time creating a
 
 -- The Game --
 
+The goal of this game is to achieve the target number given a set of numbers and operators to work with. To achieve the target number, you must use the given numbers and operators with a given stack, much like a calculator, using reverse Polish notation. You can't use a given number more times than it occurs in the set. For example:
+
+----- Level 0 -------
+Target number: 12
+
+Given numbers: 1, 4, 6, 2
+Given operators: +, -
+
+Push 6.
+Stack: 6  ||
+Push 4.
+Stack: 4  6  ||
+Push +.
+Stack: 10  ||
+Push 2.
+Stack: 2  10  ||
+Push +.
+Stack: 12  ||
+Congrats! 12 achieved!
+
+
+----- Code Design -------
+
+We will be using a version of a stack that I coded, which contains push, pop, isEmpty, isFull, and constructor methods.
+
+In addition, we will need to serve levels to the player (serve_levels) with given sets of numbers (initialize_numbers) and operators (initialize_operators). We'll also need to give the target number (initialize_answers).
+
+For our reverse Polish notation calculator (calculate), we will pass in our stack, and the player input. If the input is a number, then we just push it on top. If it is an operator, then we must pop off two items and use that operator on the two items, then push that result back on after checking to see whether it is the correct answer. So our calculate function will also be our win check function.
