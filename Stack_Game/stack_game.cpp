@@ -9,5 +9,11 @@
 #include "stackcpp.h"
 
 int main() {
-	
+	Stack<int> s(10);
+	s.push(2);
+	s.push(54);
+	s.push(4);
+	s.push(13);
+	s.pop();
+	s.print();
 }

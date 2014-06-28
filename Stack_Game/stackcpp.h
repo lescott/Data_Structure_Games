@@ -22,6 +22,7 @@ public:
 	T pop(); 
 	bool isEmpty();
 	bool isFull();
+	void print();
 
 
 private:
@@ -43,8 +44,8 @@ void Stack<T>::push(T data) {
 		cout << "Contains: " << contains << endl;
 		return;
 	}
-	contains++;
 	array[contains] = data;
+	contains++;
 	cout << "Successfully pushed " << data << endl;
 	
 }
@@ -91,7 +92,17 @@ bool Stack<T>::isFull() {
 	return false;
 }
 
+/* * * * * * * * * * * * * * * * * * * * * */
+// Function: print
+// Prints the contents of the stack.
+/* * * * * * * * * * * * * * * * * * * * * */
 
-
+template <class T>
+void Stack<T>::print() {
+	for(int i = contains; i >= 0; i--) {
+		cout << " | " << array[i];
+	}
+	cout << " ||" << endl;
+}
 
 
