@@ -1,0 +1,61 @@
+Linked List Game: Design Document
+Author: Lauren E. Scott
+June 27, 2014
+
+The goal of this game is to brush up on linked lists while at the same time creating a game that demonstrates my aptitude with them.
+
+-- The Game --
+
+This game is a simple one about ordering a random assortment of letters into the correct words, using the properties of linked lists. The player is given a set of letters, and she must assemble those letters in the correct order to create a word that is the answer to a given riddle.
+
+For example, this may be a level given to a player:
+
+-- Level 0 --
+I have wings, feathers, and I fly in the sky. What am I?
+
+Available letters: H, I, R, O, B, N, D, Q
+
+The player must use properties of a list to assemble the letters B, I, R, and D. This can be done in the following ways.
+
+l.append(B);
+l.append(I);
+l.append(R);
+l.append(D);
+Correct!
+
+Or, something like this:
+l.append(I);
+l.push_front(B);
+l.append(R);
+l.append(H);
+l.append(D);
+l.delete(H);
+Correct!
+
+If the player inputs a wrong letter:
+l.append(X);
+Letter is not in set of given letters!
+
+The player can print what they have at any time during the game:
+l.print()
+BRD
+
+The player can type Q at any time to quit the game.
+
+
+-- Code Design --
+
+Of course, we will be using a linked list for the meat of this game. The linked list will be created at the beginning of each level for the player (constructor), and it will always be denoted as "l". It can have letters attached to the back of it (append), or pushed onto the front (push_front). It can also have letters deleted by value (delete), and it can print out its values (print).
+
+In addition to these linked list functions, there will also be other functions to make this into a game. Each level will have a riddle as well as a correct answer that will win that level. These can each be represented as arrays of strings. There will also be an int to keep track of which level we are on; whenever the player gets an answer right, we will incremement the riddle[] array and answer[] array to level, which will keep each one on the same page. We will check the list after each insertion to see if it spells out the intended word (win_check). win_check will be passed the corresponding answer to check against, as well as the list that the player is currently manipulating.
+
+Each level will also have a set of possible upper-case letters that the player can use to create their answer. After every insertion (before checking for a win), we will need to check to see whether the letter being inserted is within the set of possible letters.
+
+There will be a total of 10 levels. Once level 10 is reached, the player is given a congratulatory message, and the game ends.
+
+
+
+
+
+
+
