@@ -1,0 +1,8 @@
+Stack Game: Design Document
+Author: Lauren E. Scott
+June 27, 2014
+
+The goal of this game is to brush up on stacks while at the same time creating a game that demonstrates my aptitude with them.
+
+-- The Game --
+

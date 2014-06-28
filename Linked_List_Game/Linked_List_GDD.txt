@@ -13,7 +13,12 @@ For example, this may be a level given to a player:
 -- Level 0 --
 I have wings, feathers, and I fly in the sky. What am I?
 
-Available letters: H, I, R, O, B, N, D, Q
+Available letters: HIROBNDQ
+Choose something to do to the list:
+[1] to Append a letter to the back of the list.
+[2] to Push a letter to the front of the list.
+[3] to Delete a letter from the list.
+The list will be printed out each time you modify it.
 
 The player must use properties of a list to assemble the letters B, I, R, and D. This can be done in the following ways.
 

@@ -79,7 +79,7 @@ bool win_check(LList<char> l, string answer) {
 	while(checker != 0) {						// Loop checks list against answer.
 		if(checker->getData() != answer[i])
 			return false;
-		cout << checker->getData() << " = " << answer[i] << " ? " << endl;
+//		cout << checker->getData() << " = " << answer[i] << " ? " << endl;
 		i++;
 		checker = checker->getNext();
 	}
@@ -176,7 +176,7 @@ int main() {
 	cout << " Press 3 to delete from the list. " << endl;
 	cout << " Here is your first riddle:" << endl;
 	for ( curr_level = 0; curr_level <= 10; curr_level++) {
-		cout << "------- Level " << curr_level << " ------- " << endl;
+		cout << "------- Level " << curr_level+1 << " ------- " << endl;
 		serve_level(riddle[curr_level], answer[curr_level], allowable_chars[curr_level]);
 	}
 	cout << "Nice job! You've beaten the Linked List Game! :) ";
