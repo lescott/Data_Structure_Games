@@ -1,5 +1,5 @@
 /* * * * * * * * * * * * * * * * * * * * * * * * * * */
-// stack.h
+// stackcpp.h
 // A stack implementation in C++.
 // Author: Lauren E. Scott
 // June 27, 2014
@@ -15,11 +15,12 @@ using namespace std;
 template <class T>
 class Stack {
 public:
-	Stack(int s) { array = new T[s+1]; size = s; contains = 0; }
+	Stack(int s) { array = new T[s]; size = s; contains = 0; }
 	~Stack() {}
 
 	void push(T data);
 	T pop(); 
+	T top();
 	bool isEmpty();
 	bool isFull();
 	void print();
@@ -59,11 +60,27 @@ template <class T>
 T Stack<T>::pop() {
 	if(isEmpty()) {
 		cout << "Stack is empty. " << endl;
+	} else {
+		T result = array[contains-1];
+//		delete array[contains];			// Set current position to null.
+//		[array]contains = 0;
+		contains--;
+		return result;
+	}
+}
+
+/* * * * * * * * * * * * * * * * * * * * * */
+// Function: top
+// Access the top item of the stack without returning it.
+/* * * * * * * * * * * * * * * * * * * * * */
+
+template <class T>
+T Stack<T>::top() {
+	if(isEmpty()) {
+		cout << "Stack is empty. " << endl;
 		return -1;
 	}
-	T result = array[contains];
-	contains--;
-	return result;
+	return array[contains];	
 }
 
 /* * * * * * * * * * * * * * * * * * * * * */
@@ -99,7 +116,7 @@ bool Stack<T>::isFull() {
 
 template <class T>
 void Stack<T>::print() {
-	for(int i = contains; i >= 0; i--) {
+	for(int i = contains-1; i >= 0; i--) {
 		cout << " | " << array[i];
 	}
 	cout << " ||" << endl;
