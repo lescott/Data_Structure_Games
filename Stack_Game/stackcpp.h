@@ -23,6 +23,7 @@ public:
 	T top();
 	bool isEmpty();
 	bool isFull();
+	bool hasTwoElements();
 	void print();
 
 
@@ -78,9 +79,10 @@ template <class T>
 T Stack<T>::top() {
 	if(isEmpty()) {
 		cout << "Stack is empty. " << endl;
-		return -1;
+//		return -1;
+	} else {
+		return array[contains-1];	
 	}
-	return array[contains];	
 }
 
 /* * * * * * * * * * * * * * * * * * * * * */
@@ -110,6 +112,17 @@ bool Stack<T>::isFull() {
 }
 
 /* * * * * * * * * * * * * * * * * * * * * */
+// Function: hasTwoElements
+// Checks to see whether the stack has at least two elements.
+// A specific function written for the stack game.
+/* * * * * * * * * * * * * * * * * * * * * */
+
+template <class T>
+bool Stack<T>::hasTwoElements() {
+	return (contains >= 2);
+}
+
+/* * * * * * * * * * * * * * * * * * * * * */
 // Function: print
 // Prints the contents of the stack.
 /* * * * * * * * * * * * * * * * * * * * * */
@@ -121,5 +134,4 @@ void Stack<T>::print() {
 	}
 	cout << " ||" << endl;
 }
-
 
