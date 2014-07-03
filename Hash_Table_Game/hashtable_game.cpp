@@ -8,12 +8,49 @@
 
 #include <vector>
 #include "hashtablecpp.h"
+#include <iostream>
+#include <string>
 
 /*
 vector<string> to_words(string input) {
+	string delimiter = " ";
+	vector<string> results;
+	cout << "Got here." << endl;
 
+	size_t pos = 0;
+	string token;
+	while ((pos = input.find(delimiter)) != string::npos) {
+		token = input.substr(0, pos);
+		results.push_back(token);
+		cout << "Pushing " << token << " onto results vector. " << endl;
+		input.erase(0, pos + delimiter.length());
+	}
+	return results;
 }
 */
+
+void Tokenize(string str,
+                      vector<string>& tokens,
+                      const string& delimiters = " ")
+{
+    // Skip delimiters at beginning.
+    string::size_type lastPos = str.find_first_not_of(delimiters, 0);
+    // Find first "non-delimiter".
+    string::size_type pos     = str.find_first_of(delimiters, lastPos);
+    cout << "String: " << str << endl;
+
+    while (string::npos != pos || string::npos != lastPos)
+    {
+        // Found a token, add it to the vector.
+        tokens.push_back(str.substr(lastPos, pos - lastPos));
+        // Skip delimiters.  Note the "not_of"
+        lastPos = str.find_first_not_of(delimiters, pos);
+        // Find next "non-delimiter"
+        pos = str.find_first_of(delimiters, lastPos);
+    }
+}
+
+
 
 
 int main() {
@@ -22,19 +59,20 @@ int main() {
 	vector<string> words;
 	cout << "Input size of hash table. " << endl;
 	cin >> size;
-	HashTable ht(size);
+	HashTable ht(size); 
+	cin.clear();
+	cin.ignore(10000, '\n');
 
-//	cout << "Input a sentence. It will be broken up into words that will be put into the hash table. " << endl;
-//	cin >> input;
-//	words = to_words(input);
-//	for(int i = 0; i < words.size(); i++) {
-//		ht.insert(words[i]);
-//	}
-	ht.insert("Hi");
-	ht.insert("stuff");
-	ht.insert("and");
-	ht.insert("yeah");
-	ht.insert("hmmm");
+	cout << "Input a sentence. It will be broken up into words that will be put into the hash table. " << endl;
+	getline(cin, input);
+	cout << "Input: " << input << endl;
+	Tokenize(input, words);
+	for(int i = 0; i < words.size(); i++) {
+		ht.insert(words[i]);
+	}
+
+	ht.get_used_buckets();
+
 
 	cout << "Guess the size of the hash table!" << endl;
 	cin >> guess;

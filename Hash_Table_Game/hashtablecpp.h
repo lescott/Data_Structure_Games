@@ -23,7 +23,7 @@ public:
 
 	int hash(string data);
 	void insert(string data);
-	void print_table();
+	void print_table();				
 	int get_used_buckets();
 
 private:
@@ -46,9 +46,9 @@ int HashTable::hash(string data) {
 	int string_val = 0;
 	for(int i = 0; i < data.length(); i++) {
 		string_val += data[i];
-		cout << "String val = " << string_val << endl;
+//		cout << "String val = " << string_val << endl;
 	}
-	cout << "Final index: " << (string_val % size) << endl;
+//	cout << "Final index: " << (string_val % size) << endl;
 	return (string_val % size);
 
 }
@@ -90,8 +90,8 @@ void HashTable::print_table() {
 int HashTable::get_used_buckets() {
 	int result = 0;
 	for (int i = 0; i < size; i++) { 
-		if (&table[i] == 0) {
-			cout << "Empty." << endl;
+		if (table[i].is_empty()) {
+//			cout << "Empty." << endl;
 		} else {
 			result++;
 		}

@@ -8,6 +8,7 @@
 
 #include <iostream>
 #include <stdlib.h>
+#include <stdbool.h>
 
 using namespace std;
 
@@ -38,6 +39,7 @@ public:
 	void append(T data);
 	void push_front(T data);
 	void del(T data);
+	bool is_empty();
 	Node<T>* random_list();
 
 private:
@@ -110,6 +112,20 @@ void LList<T>::del(T data) {
 
 		delete tmp;
 	}
+}
+
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+// Function: is_empty
+// Returns true if the linked list is empty.
+/* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
+
+template <class T>
+bool LList<T>::is_empty() {
+	Node<T>* tmp = head;
+	if (tmp == 0) {
+		return true;
+	}
+	return false;
 }
 
 /* * * * * * * * * * * * * * * * * * * * * */
