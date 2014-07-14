@@ -11,23 +11,8 @@
 #include <iostream>
 #include <string>
 
-/*
-vector<string> to_words(string input) {
-	string delimiter = " ";
-	vector<string> results;
-	cout << "Got here." << endl;
 
-	size_t pos = 0;
-	string token;
-	while ((pos = input.find(delimiter)) != string::npos) {
-		token = input.substr(0, pos);
-		results.push_back(token);
-		cout << "Pushing " << token << " onto results vector. " << endl;
-		input.erase(0, pos + delimiter.length());
-	}
-	return results;
-}
-*/
+// Borrowed string tokenizer function. 
 
 void Tokenize(string str,
                       vector<string>& tokens,
@@ -50,9 +35,6 @@ void Tokenize(string str,
     }
 }
 
-
-
-
 int main() {
 	string input;
 	int size, guess;
@@ -71,8 +53,7 @@ int main() {
 		ht.insert(words[i]);
 	}
 
-	ht.get_used_buckets();
-
+	ht.get_used_buckets();		// Check how many buckets in the hash table are used.
 
 	cout << "Guess the size of the hash table!" << endl;
 	cin >> guess;

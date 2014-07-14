@@ -1,0 +1,141 @@
+Graph Game: Design Document
+Author: Lauren E. Scott
+July 9, 2014
+
+The goal of this game is to brush up on graphs while at the same time creating a game that demonstrates my aptitude with them.
+
+-- The Game --
+
+This is an exploration game, with the goal being to get through a dungeon full of rooms to the end, kill the boss, and get out with the treasure! 
+
+The player is presented with a list of options to go in (north, south, east and west) which each represent a new room. The player starts out with a base attack damage of 1, a base defense of 1, a base health of 10, and an inventory with Nothing in it. Each room may have an enemy in it and may have an item, which can increase your attack damage or defense. Once the player moves to a room, they can choose to Fight, Pick Up the item, or Move to another room. Enemies may drop valuable items. The final room contains a Boss enemy, which drops the Escape Crystal, which allows the player to leave the dungeon and win the game.
+
+For example, this may be a sample playthrough:
+
+Player enters the dungeon.
+
+Starting stats:
+Health 		10
+Defense 	1
+Attack 		1
+
+-- Room 0 --
+Enemy: None
+Item: None
+Directions to go: North, South
+
+What would you like to do?
+[F]ight
+[P]ick up item
+[M]ove
+
+>> M
+
+Move where?
+
+[N]orth
+[S]outh
+[E]ast
+[W]est
+[B]ack to menu
+
+>> W
+
+Can't move West.
+
+Move where?
+
+[N]orth
+[S]outh
+[E]ast
+[W]est
+[B]ack to menu
+
+>> N
+
+-- Room 3 --
+Enemy: Goblin
+Item: Jewel
+Directions to go: North, South, East
+
+What would you like to do?
+[F]ight
+[P]ick up item
+[M]ove
+
+>> P
+
+Picked up the Jewel.
+Defense raised 1.
+Current stats:
+Health 		10
+Defense 	2
+Attack 		1
+
+What would you like to do?
+[F]ight
+[P]ick up item
+[M]ove
+
+>> F
+
+Fighting the goblin!
+The goblin swings for 2.
+You swing for 3.
+Your health: 8
+Goblin's health: 2
+Keep fighting?
+Y/N
+
+>> Y
+
+The goblin swings for 1.
+You swing for 3.
+Your health: 7
+Goblin's health: 0
+The goblin dies!
+The goblin drops: Axe
+Attack raised by 2.
+Current stats:
+Health 		7
+Defense 	2
+Attack  	3
+
+
+
+
+
+
+-- Code Design --
+
+We will be using a graph data structure to represent the dungeon. Each node will represent a Room. Each Room will contain within it:
+
+Room
+- An adjacency list with North, South, East and West pointers that are either null or pointing to another room
+- Enemy pointer, either null or pointing to an Enemy struct
+- Item pointer, either null or pointing to an Item struct
+
+The Player has members
+- Health
+- Defense
+- Attack
+
+Enemy struct has
+- Name
+- Health
+- Attack
+
+Item struct has
+- Name
+- HealthPlus
+- DefensePlus
+- AttackPlus
+
+
+
+
+
+
+
+
+
